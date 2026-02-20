@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Popup</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ADEDE, #c471f5);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+        overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Button */
+    .btn {
+        padding: 15px 40px;
+        font-size: 18px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        color: white;
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1) rotate(3deg);
+        background: rgba(255,255,255,0.3);
+    }
+
+    /* Popup Background */
+    .popup-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s;
+    }
+
+    /* Glass Popup */
+    .popup {
+        width: 300px;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        transform: scale(0.5);
+        transition: 0.4s;
+    }
+
+    .popup h2 {
+        margin-bottom: 15px;
+    }
+
+    .close-btn {
+        margin-top: 20px;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        background: white;
+        color: #333;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close-btn:hover {
+        background: #ddd;
+    }
+
+    /* Active State */
+    .popup-container.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .popup-container.active .popup {
+        transform: scale(1);
+        animation: bounce 0.6s ease;
+    }
+
+    @keyframes bounce {
+        0% { transform: scale(0.5); }
+        60% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+</style>
+</head>
+<body>
+
+<button class="btn" onclick="showPopup()">Click Me 🚀</button>
+
+<div class="popup-container" id="popup">
+    <div class="popup">
+        <h2>🎉 Success!</h2>
+        <p>Your action was completed successfully!</p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<!-- Sound Effect -->
+<audio id="clickSound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-09.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    function showPopup() {
+        document.getElementById("popup").classList.add("active");
+        document.getElementById("clickSound").play();
+    }
+
+    function closePopup() {
+        document.getElementById("popup").classList.remove("active");
+    }
+</script>
+
+</body>
+</html>

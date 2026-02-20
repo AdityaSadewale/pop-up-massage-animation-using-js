@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Success Popup</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4ADEDE, #c471f5);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Button */
+.btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* Popup */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.popup {
+    width: 300px;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    transform: scale(0.5);
+    transition: 0.4s;
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+}
+
+.popup-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container.active .popup {
+    transform: scale(1);
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0% { transform: scale(0.5); }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: red;
+    top: -10px;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<button class="btn" onclick="showPopup()">Click Me 🎉</button>
+
+<div class="popup-container" id="popup">
+    <div class="popup">
+        <h2>🎉 Success!</h2>
+        <p>Action completed successfully!</p>
+    </div>
+</div>
+
+<audio id="sound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-09.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function showPopup() {
+    const popup = document.getElementById("popup");
+    popup.classList.add("active");
+    document.getElementById("sound").play();
+    createConfetti();
+
+    // Auto close after 3 seconds
+    setTimeout(() => {
+        popup.classList.remove("active");
+    }, 3000);
+}
+
+function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = randomColor();
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+    }
+}
+
+function randomColor() {
+    const colors = ["#ff0", "#0ff", "#f0f", "#0f0", "#f00", "#00f"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+</body>
+</html>
