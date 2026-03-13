@@ -69,5 +69,4 @@ Feel free to fork this repository and improve the design or add new features.
 This project is open-source and free to use.
 
 👨‍💻 Author
-
 Aditya Sadewale
