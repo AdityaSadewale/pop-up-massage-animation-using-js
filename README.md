@@ -65,9 +65,5 @@ Your project will be live 🎉
 Contributions are welcome!
 Feel free to fork this repository and improve the design or add new features.
 
-📜 License
-
-T
-
 👨‍💻 Author
 Aditya Sadewale
