@@ -67,7 +67,7 @@ Feel free to fork this repository and improve the design or add new features.
 
 📜 License
 
-This project is open-source and free to use.
+T
 
 👨‍💻 Author
 Aditya Sadewale
