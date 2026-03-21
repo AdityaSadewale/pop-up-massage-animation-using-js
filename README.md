@@ -46,17 +46,11 @@ Click the button and enjoy the animation 🎉
 🌐 Live Demo (Optional)
 
 You can deploy this project using GitHub Pages.
-
 Steps:
-
 Go to repository Settings
-
 Click Pages
-
 Select branch: main
-
 Save
-
 Your project will be live 🎉
 
 🤝 Contributing
