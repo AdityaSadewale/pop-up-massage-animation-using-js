@@ -21,13 +21,12 @@ This project displays a stylish success popup with smooth animations, sound effe
 
 📱 Fully responsive design
 
+
 🛠 Technologies Used
-
 HTML5
-
 CSS3 (Animations & Glassmorphism)
-
 JavaScript (DOM manipulation & effects)
+
 
 📂 Project Structure
 pop-up-message-animation-using-js/
